@@ -16,3 +16,10 @@ function testReturnFirst20Char(){
 };
 
 testReturnFirst20Char();
+
+function testNoteHasUniqueID(){
+  var note = new Note("test");
+  var secondNote = new Note("second test");
+  assert.isTrue(secondNote.id === note.id + 1);
+};
+testNoteHasUniqueID();

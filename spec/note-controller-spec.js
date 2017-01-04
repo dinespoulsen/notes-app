@@ -17,7 +17,6 @@ function testWillUpdateHTML(){
       return "test";
     }
   };
-  var myNoteList = new NoteList();
   var myNoteController = new NoteController();
   var myDouble = new NoteListViewDouble();
   myNoteController.updateHTML(myDouble);
@@ -26,3 +25,19 @@ function testWillUpdateHTML(){
 };
 
 testWillUpdateHTML();
+
+function testHasHashchange(){
+  function NoteListViewDouble(){
+    this.listNotesCallCount = 0;
+  };
+
+  NoteListViewDouble.prototype = {
+    listNotes: function(){
+      this.listNotesCallCount += 1;
+      return "test";
+    }
+  };
+  var myNoteController = new NoteController();
+  var myDouble = new NoteListViewDouble();
+  
+};
