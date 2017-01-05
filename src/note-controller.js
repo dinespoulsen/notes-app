@@ -13,22 +13,20 @@
     element.innerHTML = noteListView.listNotes();
   };
 
+
   NoteController.prototype.makeUrlChangeShowNoteForCurrentPage = function(){
-    document.addEventListener("hashchange", this.showNoteForCurrentPage());
+    window.addEventListener("hashchange", this.showNoteForCurrentPage.bind(this));
+    console.log(this)
   };
 
   NoteController.prototype.showNoteForCurrentPage = function(){
-    this.showNote(this.getNoteFromURL(window.location));
+    this.showNote(this.getNote(window.location));
   };
 
-  NoteController.prototype.getNoteFromURL = function(location){
-    var noteId = location.hash.split("#")[1];
-    if (!noteId) {
-      return noteId = 0;
-    } else {
-      var note = this.noteListView._noteList._notes[noteId];
-      return note;
-    }
+  NoteController.prototype.getNote = function(location){
+   var noteID = location.hash.split("/")[1];
+   var note = this.noteList._notes[noteID];
+   return note
   };
 
   NoteController.prototype.showNote = function(note){
