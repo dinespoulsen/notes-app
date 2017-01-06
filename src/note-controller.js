@@ -28,7 +28,6 @@
   };
 
   NoteController.prototype.showNoteForCurrentPage = function() {
-    console.log(this);
     this.showSingleNote(this.getIdFromUrl(window.location));
   };
 

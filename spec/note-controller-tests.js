@@ -1,3 +1,8 @@
+
+
+
+window.onload = function() {
+
 function controllerExists() {
   var noteController = new NoteController();
   assert.isTrue(noteController);
@@ -37,21 +42,20 @@ function controllerGetsUrl() {
   assert.isTrue(id === 0);
 }
 
-// function controllerShowsNoteForCurrentPage() {
-//     // window.onload = function () {
-//     // var noteController = new NoteController();
-//     // window.addEventListener("hashchange", noteController.showNoteForCurrentPage.bind(noteController))
-//     // noteController.createNote("I'm a note");
-//     // noteController.insertHTML();
-//     var notes = document.getElementById("app").innerHTML = "<ul><li><a id='link' href='#note/0'><div>I'm a note</div></a></li></ul>"
-//     console.log(notes)
-//     document.getElementById("link").click();
-//   assert.isTrue(document.getElementById("app").innerHTML === "<div>I'm a note</div>")
-// }
-
+function clickingLinkShowsFullNote() {
+  window.addEventListener("hashchange", function() {
+    assert.isTrue(document.getElementById("app").innerHTML === "<div>This is a note that is longer than 20 characters.</div>");
+  });
+  var noteController = new NoteController();
+  noteController.createNote("This is a note that is longer than 20 characters.");
+  noteController.insertHTML();
+  console.log(document.getElementsByTagName("a")[0]);
+  document.getElementsByTagName("a")[0].click();
+}
 
 controllerExists();
 controllerCanInsertHTML();
 controllerCanCreateSingleNoteView();
 controllerGetsUrl();
-// controllerShowsNoteForCurrentPage();
+clickingLinkShowsFullNote();
+}
