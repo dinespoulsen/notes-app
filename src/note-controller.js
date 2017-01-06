@@ -33,10 +33,14 @@
 
   NoteController.prototype.preventLoadingPage = function(){
     var form = document.getElementById("form-note");
-    form.addEventListener("submit", function(event){
-      event.preventDefault();
-    });
+    form.addEventListener("submit", this.createNoteFromText.bind(this));
   };
+
+  NoteController.prototype.createNoteFromText = function(event) {
+    event.preventDefault();
+    this.createNote(document.getElementById("text").value)
+    this.insertHTML();
+  }
 
   exports.NoteController = NoteController;
 })(this);
