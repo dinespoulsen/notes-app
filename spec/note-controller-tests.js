@@ -1,6 +1,3 @@
-
-
-
 window.onload = function() {
 
 function controllerExists() {
@@ -16,6 +13,7 @@ function controllerCanInsertHTML() {
     }
   };
   var noteController = new NoteController();
+  noteController.createNote("This is a note that is longer than 20 characters.");
   var noteListViewDouble = new NoteListViewDouble();
   noteController.noteListView = noteListViewDouble
   var element = document.getElementById("app");
@@ -24,7 +22,6 @@ function controllerCanInsertHTML() {
 };
 
 function controllerCanCreateSingleNoteView() {
-  var noteController = new NoteController();
   noteController.createNote("This is a note");
   noteController.showSingleNote(0);
   var element = document.getElementById("app");
@@ -33,7 +30,6 @@ function controllerCanCreateSingleNoteView() {
 };
 
 function controllerGetsUrl() {
-  var noteController = new NoteController();
   function LocationDouble() {
     this.hash = "#note/0";
   }
@@ -46,12 +42,16 @@ function clickingLinkShowsFullNote() {
   window.addEventListener("hashchange", function() {
     assert.isTrue(document.getElementById("app").innerHTML === "<div>This is a note that is longer than 20 characters.</div>");
   });
-  var noteController = new NoteController();
   noteController.createNote("This is a note that is longer than 20 characters.");
   noteController.insertHTML();
-  document.getElementsByTagName("a")[0].click();
+  document.getElementsByTagName("a")[1].click();
 }
 
+function clearNotes(){
+  assert.isTrue(document.getElementById("app").innerHTML === "")
+}
+
+clearNotes();
 controllerExists();
 controllerCanInsertHTML();
 controllerCanCreateSingleNoteView();
