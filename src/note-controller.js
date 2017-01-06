@@ -31,5 +31,12 @@
     this.showSingleNote(this.getIdFromUrl(window.location));
   };
 
+  NoteController.prototype.preventLoadingPage = function(){
+    var form = document.getElementById("form-note");
+    form.addEventListener("submit", function(event){
+      event.preventDefault();
+    });
+  };
+
   exports.NoteController = NoteController;
 })(this);

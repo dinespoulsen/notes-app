@@ -4,4 +4,5 @@ window.onload = function(){
   noteController.createNote("This is a note that is longer than 20 characters.");
   noteController.createNote("This is a note that is also longer than 20 characters.");
   noteController.insertHTML();
+  noteController.preventLoadingPage();
 };

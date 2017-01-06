@@ -49,7 +49,6 @@ function clickingLinkShowsFullNote() {
   var noteController = new NoteController();
   noteController.createNote("This is a note that is longer than 20 characters.");
   noteController.insertHTML();
-  console.log(document.getElementsByTagName("a")[0]);
   document.getElementsByTagName("a")[0].click();
 }
 
